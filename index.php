@@ -7,6 +7,7 @@ function NoobParser(string $url, string $htmlElement, string $condition)
     $content = file_get_contents($url);
     $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'utf-8');
 
+    libxml_use_internal_errors(true);
     $dom = new DOMDocument();
     $dom->loadHTML($content);
     $node = $dom->getElementsByTagName($htmlElement);
